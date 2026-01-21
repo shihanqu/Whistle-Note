@@ -47,8 +47,8 @@ A beautiful, real-time pitch detection web app that transforms your whistling or
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/whistle-note.git
-cd whistle-note
+git clone https://github.com/shihanqu/Whistle-Note.git
+cd Whistle-Note
 
 # Install dependencies
 npm install
@@ -65,14 +65,11 @@ npm run build
 
 The built files will be in the `dist` folder.
 
-## 🌐 Deploying to GitHub Pages
+This project is configured for deployment to GitHub Pages using the `gh-pages` package:
 
-This project includes a GitHub Actions workflow for automatic deployment:
-
-1. Push your code to the `main` branch
-2. Go to your repository Settings → Pages
-3. Under "Source", select "GitHub Actions"
-4. The site will be deployed automatically on each push
+1. The site is hosted at: [https://shihanqu.github.io/Whistle-Note/](https://shihanqu.github.io/Whistle-Note/)
+2. To deploy updates, run: `npm run deploy`
+3. Ensure the repository settings (Settings → Pages) are set to deploy from the `gh-pages` branch.
 
 **Important**: Update the `base` path in `vite.config.ts` to match your repository name:
 
