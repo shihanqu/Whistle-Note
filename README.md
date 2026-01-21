@@ -1,6 +1,8 @@
 # WhistleNote 🎵
 
-A beautiful, real-time pitch detection web app that transforms your whistling or guitar playing into written music. Built with React, TypeScript, and the Web Audio API.
+Real-time pitch detection web app that transforms your whistling or guitar playing into written music. Built with React, TypeScript, and the Web Audio API.
+
+**[Live Demo](https://shihanqu.github.io/Whistle-Note/)**
 
 ![WhistleNote Screenshot](./screenshot.png)
 
@@ -57,13 +59,7 @@ npm install
 npm run dev
 ```
 
-### Building for Production
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` folder.
+#The development server will be available at `http://localhost:5173`.
 
 This project is configured for deployment to GitHub Pages using the `gh-pages` package:
 
