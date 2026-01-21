@@ -38,6 +38,21 @@ function getNoteYPosition(note: string, octave: number): number {
 }
 
 /**
+ * Convert precise pitch (with cents) to analog Y position
+ */
+function getPitchYPosition(note: string, octave: number, cents: number): number {
+    const noteIndex = NOTE_NAMES.indexOf(note);
+    const clampedOctave = Math.max(MIN_OCTAVE, Math.min(MAX_OCTAVE, octave));
+
+    // Add cents offset (100 cents = 1 semitone)
+    const preciseSemitone = (clampedOctave - MIN_OCTAVE) * 12 + noteIndex + (cents / 100);
+    const totalSemitones = OCTAVE_RANGE * 12;
+
+    const normalized = preciseSemitone / totalSemitones;
+    return 95 - (normalized * 90);
+}
+
+/**
  * Get color based on note accuracy
  */
 function getAccuracyColor(cents: number): string {
@@ -181,7 +196,7 @@ export const NoteDisplay: React.FC<NoteDisplayProps> = ({
                             className="note-dot note-dot--current"
                             style={{
                                 left: `calc(${playheadPercent}% + 12px)`,
-                                top: `${getNoteYPosition(currentPitch.note, currentPitch.octave)}%`,
+                                top: `${getPitchYPosition(currentPitch.note, currentPitch.octave, currentPitch.cents)}%`,
                                 backgroundColor: getAccuracyColor(currentPitch.cents),
                             }}
                         />
@@ -194,7 +209,8 @@ export const NoteDisplay: React.FC<NoteDisplayProps> = ({
                 <div
                     className="note-display__label"
                     style={{
-                        top: `${getNoteYPosition(currentPitch.note, currentPitch.octave)}%`,
+                        top: `${getPitchYPosition(currentPitch.note, currentPitch.octave, currentPitch.cents)}%`,
+                        backgroundColor: getAccuracyColor(currentPitch.cents),
                     }}
                 >
                     {currentPitch.note}{currentPitch.octave}

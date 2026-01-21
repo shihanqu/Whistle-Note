@@ -36,7 +36,7 @@ interface UseAudioProcessorOptions {
 
 // Frequency ranges for different modes
 const FREQUENCY_RANGES = {
-    whistle: { min: 500, max: 2500 },  // Human whistle range
+    whistle: { min: 250, max: 2500 },  // Human whistle range
     guitar: { min: 80, max: 1200 }     // Guitar fundamental range
 };
 
