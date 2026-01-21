@@ -16,11 +16,11 @@ export function convertNotesToStrudel(notes: NoteEvent[]): string {
     let lastEndTime = notes[0].startTime;
 
     // Initial rest if recording didn't start with a note immediately
-    if (lastEndTime > 0.1) {
+    if (lastEndTime > 0.05) {
         strudelNotes.push(`~@${lastEndTime.toFixed(2)}`);
     }
 
-    notes.forEach((note) => {
+    notes.forEach((note, index) => {
         // Check for rest between notes
         const restDuration = note.startTime - lastEndTime;
         if (restDuration > 0.05) {
@@ -34,8 +34,13 @@ export function convertNotesToStrudel(notes: NoteEvent[]): string {
         // Append note with its duration
         strudelNotes.push(`${noteName}${note.octave}@${duration.toFixed(2)}`);
 
+        // Add line break every 4 notes for readability
+        if ((index + 1) % 4 === 0 && index !== notes.length - 1) {
+            strudelNotes.push('\n  ');
+        }
+
         lastEndTime = note.endTime || note.startTime + duration;
     });
 
-    return strudelNotes.join(' ');
+    return `note("<${strudelNotes.join(' ')}>")`;
 }

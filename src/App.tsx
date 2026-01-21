@@ -61,10 +61,11 @@ function App() {
   }, [isRecording, startRecording, stopRecording]);
 
   const handleDone = useCallback(() => {
+    let finalNotes = notes;
     if (isRecording) {
-      stopRecording();
+      finalNotes = stopRecording();
     }
-    const output = convertNotesToStrudel(notes);
+    const output = convertNotesToStrudel(finalNotes);
     setStrudelOutput(output);
   }, [isRecording, stopRecording, notes]);
 
@@ -101,7 +102,7 @@ function App() {
         <div className="header__title">
           <div className="header__label">Live Recording</div>
           <h1 className="header__name">
-            {mode === 'whistle' ? 'Precision Whistle Tracker' : 'Guitar Pitch Tracker'}
+            {mode === 'whistle' ? 'Whistle Note' : 'Guitar Note'}
           </h1>
         </div>
 
@@ -183,7 +184,7 @@ function App() {
             <div className="strudel-overlay__content">
               <h3>Strudel Notation</h3>
               <div className="strudel-code">
-                <code>notes("{strudelOutput}")</code>
+                <pre><code>{strudelOutput}</code></pre>
               </div>
               <div className="strudel-overlay__actions">
                 <button className="overlay-btn" onClick={copyToClipboard}>Copy</button>

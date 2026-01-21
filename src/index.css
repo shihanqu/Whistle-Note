@@ -509,8 +509,12 @@ h6 {
   font-size: 0.9rem;
   overflow-x: auto;
   min-height: 80px;
-  display: flex;
-  align-items: center;
+}
+
+.strudel-code pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .strudel-overlay__actions {

@@ -190,6 +190,7 @@ export function useAudioProcessor(options: UseAudioProcessorOptions = {}) {
         }));
 
         isRecordingRef.current = false;
+        return smoothedNotes;
     }, []);
 
     /**
