@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   // Base path for GitHub Pages deployment
   // Change 'whistle-note' to your actual repository name
-  base: process.env.NODE_ENV === 'production' ? '/whistle-note/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/Whistle-Note/' : '/',
   build: {
     outDir: 'dist',
     sourcemap: true
